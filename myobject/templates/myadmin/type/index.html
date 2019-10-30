@@ -1,0 +1,47 @@
+{% extends "myadmin/base.html" %}
+
+{% block myadmin_index %}
+<li>
+	<a href="{% url 'myadmin_index' %}"><i class="ui-icon-blank icon-home"></i> 首页</a>
+</li>
+{% endblock %}
+
+{% block myadmin_type_index %}
+<li class="active">
+	<a href="{% url 'myadmin_type_index' %}"><i class="icon-user-open"></i>网速信息</a>
+</li>
+{% endblock %}
+
+{% block mainbody %}
+<h3>
+	网络信息浏览
+</h3>
+
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>时间(美国)</th>
+			<th>id号</th>
+			<th>上传</th>
+			<th>下载</th>
+			<th>ping值</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for vo in inter %}
+		<tr>
+			<td>{{ vo.timestamp }}</td>
+			<td>{{ vo.id }}</td>
+			<td>{{ vo.download }}</td>
+			<td>{{ vo.upload }}}</td>
+			<td>{{ vo.ping }}</td>
+            <td></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
+{% endblock %}
